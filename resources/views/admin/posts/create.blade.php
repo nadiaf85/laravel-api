@@ -29,7 +29,9 @@
                             <label>Tags</label>
                             @foreach ($tags as $tag)
                                 <div class="form-check">
-                                    <input class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="{{$tag->slug}}">
+                                    <input class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="{{$tag->slug}}"
+                                    {{-- se old tags ha un valore allora guardo se contiene il tag,se lo contiene checked --}}
+                                    {{old("tags") && in_array($tag->id, old("tags")) ? "checked" : ""}}>
                                     <label class="form-check-label" for="{{$tag->slug}}">
                                         {{$tag->title}}
                                     </label>
